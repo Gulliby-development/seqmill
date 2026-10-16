@@ -1,0 +1,10 @@
+node_modules/
+.baked/
+*.db
+dist/
+__pycache__/
+.pytest_cache/
+.ruff_cache/
+.venv/
+*.egg-info/
+build/
