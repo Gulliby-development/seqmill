@@ -13,7 +13,7 @@ EXPECTED_USAGE = (
     "usage: seqmill stats FILE...\n"
     "       seqmill revcomp [--width N] FILE...\n"
     "       seqmill translate [--frame F] [--to-stop] [--width N] FILE...\n"
-    "       seqmill orfs [--min N] FILE...\n"
+    "       seqmill orfs [--min N] [--strand both|forward|reverse] FILE...\n"
     "       seqmill digest --enzyme NAME[,NAME]... [--circular] FILE...\n"
     "       seqmill align [--mode global|local] [--match N] [--mismatch N] [--gap N] [--width N] A B\n"
     "       seqmill motif [--mismatches N] [--both-strands] PATTERN FILE...\n"
