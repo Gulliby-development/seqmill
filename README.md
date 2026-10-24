@@ -23,6 +23,8 @@ usage: seqmill stats FILE...
        seqmill qc [--trim-end Q] [--min-length N] [--min-quality Q] FILE...
 ```
 
+`python -m seqmill --version` prints `seqmill 0.1.0` and exits with 0. Like `--help`, it is recognized only as the single argument.
+
 For example, save this supplied fixture as `reads.fa` in the repository root:
 
 ```text

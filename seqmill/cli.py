@@ -20,6 +20,8 @@ USAGE = """usage: seqmill stats FILE...
        seqmill qc [--trim-end Q] [--min-length N] [--min-quality Q] FILE...
 """
 
+VERSION = "0.1.0"
+
 _COMMANDS = {
     "stats": stats_run,
     "revcomp": run_revcomp,
@@ -39,6 +41,9 @@ def main(argv: list[str], stdin=None, stdout=None, stderr=None) -> int:
 
     if argv == ["--help"]:
         output_stream.write(USAGE)
+        return 0
+    if argv == ["--version"]:
+        output_stream.write(f"seqmill {VERSION}\n")
         return 0
     if not argv:
         error_stream.write(
