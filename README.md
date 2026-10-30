@@ -13,7 +13,7 @@ There is nothing to install. Use Python 3.11 or newer and run `python -m seqmill
 Run the commands below as `python -m seqmill COMMAND ...` from the repository root. File arguments are paths or `-` for standard input.
 
 ```text
-usage: seqmill stats FILE...
+usage: seqmill stats [--no-header] FILE...
        seqmill revcomp [--width N] FILE...
        seqmill translate [--frame F] [--to-stop] [--width N] FILE...
        seqmill orfs [--min N] [--strand both|forward|reverse] FILE...
@@ -43,9 +43,11 @@ file      records  bases  min  max  mean  n50   gc%  n
 reads.fa        3     22    0   16   7.3   16  65.0  2
 ```
 
+Use `python -m seqmill stats --no-header reads.fa` to print the data rows without the header line, for scripts that collect the rows of several runs. The columns keep the widths they have with the header.
+
 ## Commands
 
-- `stats FILE...` reports each file's record count, total bases, minimum and maximum sequence lengths, mean length, N50, GC percentage and number of `N` bases.
+- `stats [--no-header] FILE...` reports each file's record count, total bases, minimum and maximum sequence lengths, mean length, N50, GC percentage and number of `N` bases. With `--no-header` the header line is left out and the rows keep their column widths.
 - `revcomp [--width N] FILE...` writes reverse-complemented records. FASTA and FASTQ formats are preserved, and FASTQ quality strings are reversed along with their sequences.
 - `translate [--frame F] [--to-stop] [--width N] FILE...` writes translated proteins as FASTA. Choose any of the six reading frames; negative frames use the reverse complement, and `--to-stop` truncates translation before the first stop codon.
 - `orfs [--min N] [--strand both|forward|reverse] FILE...` reports complete open reading frames from all six frames, or from only the three forward or the three reverse frames with `--strand`. `--min` sets the minimum amino-acid length, excluding the stop codon.

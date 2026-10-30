@@ -33,7 +33,7 @@ def test_readme_documents_and_runs_the_stats_example(
     readme = readme_path.read_text(encoding="utf-8")
 
     expected_usage = (
-        "usage: seqmill stats FILE...\n"
+        "usage: seqmill stats [--no-header] FILE...\n"
         "       seqmill revcomp [--width N] FILE...\n"
         "       seqmill translate [--frame F] [--to-stop] [--width N] FILE...\n"
         "       seqmill orfs [--min N] [--strand both|forward|reverse] FILE...\n"
@@ -77,7 +77,7 @@ def test_readme_documents_and_runs_the_stats_example(
     ]
 
     expected_commands = (
-        "- `stats FILE...` reports each file's record count, total bases, minimum and maximum sequence lengths, mean length, N50, GC percentage and number of `N` bases.\n"
+        "- `stats [--no-header] FILE...` reports each file's record count, total bases, minimum and maximum sequence lengths, mean length, N50, GC percentage and number of `N` bases. With `--no-header` the header line is left out and the rows keep their column widths.\n"
         "- `revcomp [--width N] FILE...` writes reverse-complemented records. FASTA and FASTQ formats are preserved, and FASTQ quality strings are reversed along with their sequences.\n"
         "- `translate [--frame F] [--to-stop] [--width N] FILE...` writes translated proteins as FASTA. Choose any of the six reading frames; negative frames use the reverse complement, and `--to-stop` truncates translation before the first stop codon.\n"
         "- `orfs [--min N] [--strand both|forward|reverse] FILE...` reports complete open reading frames from all six frames, or from only the three forward or the three reverse frames with `--strand`. `--min` sets the minimum amino-acid length, excluding the stop codon.\n"
