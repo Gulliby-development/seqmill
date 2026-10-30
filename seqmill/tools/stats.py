@@ -1,4 +1,4 @@
-from seqmill.core.options import parse_options
+from seqmill.core.options import OptionSpec, parse_options
 from seqmill.core.seq import SeqError
 from seqmill.core.text import fixed1, render_table
 from seqmill.formats.files import Io, check_stdin_once, load_records
@@ -7,7 +7,7 @@ _HEADER = ["file", "records", "bases", "min", "max", "mean", "n50", "gc%", "n"]
 
 
 def run(argv: list[str], io: Io) -> int:
-    parsed = parse_options(argv, [])
+    parsed = parse_options(argv, [OptionSpec("--no-header", "flag", False)])
     if not parsed.args:
         raise SeqError("missing FILE")
     check_stdin_once(parsed.args)
@@ -58,6 +58,9 @@ def run(argv: list[str], io: Io) -> int:
             ]
         )
 
-    output = "\n".join(render_table(_HEADER, rows, set(range(1, len(_HEADER))))) + "\n"
+    lines = render_table(_HEADER, rows, set(range(1, len(_HEADER))))
+    if parsed.values["--no-header"]:
+        lines = lines[1:]
+    output = "\n".join(lines) + "\n"
     io.stdout.write(output)
     return 0

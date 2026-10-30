@@ -10,7 +10,7 @@ from seqmill import cli
 from seqmill.tools import align, convert, digest, motif, orfs, qc, stats
 
 EXPECTED_USAGE = (
-    "usage: seqmill stats FILE...\n"
+    "usage: seqmill stats [--no-header] FILE...\n"
     "       seqmill revcomp [--width N] FILE...\n"
     "       seqmill translate [--frame F] [--to-stop] [--width N] FILE...\n"
     "       seqmill orfs [--min N] [--strand both|forward|reverse] FILE...\n"
